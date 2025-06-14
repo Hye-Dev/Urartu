@@ -72,7 +72,7 @@ export async function POST(request: NextRequest) {
       .update(
         JSON.stringify({
           sub: authCode?.userId,
-          iss: process.env.URI + "/auth",
+          iss: process.env.URI,
           aud: body.get("client_id") as string,
           exp: DateTime.now().plus({ minutes: 5 }).toSeconds(),
           iat: DateTime.now().toSeconds(),
@@ -92,7 +92,7 @@ export async function POST(request: NextRequest) {
       .update(
         JSON.stringify({
           sub: authCode?.userId,
-          iss: process.env.URI + "/auth",
+          iss: process.env.URI,
           aud: body.get("client_id") as string,
           exp: DateTime.now()
             .plus({ minutes: 1 * 60 })
@@ -117,7 +117,7 @@ export async function POST(request: NextRequest) {
             .plus({ minutes: 1 * 60 })
             .toSeconds(),
           sub: authCode?.userId,
-          iss: process.env.URI + "/auth",
+          iss: process.env.URI,
           ...authCode.user,
         })
       )
@@ -211,7 +211,7 @@ export async function POST(request: NextRequest) {
       .update(
         JSON.stringify({
           sub: session?.userId,
-          iss: process.env.URI + "/auth",
+          iss: process.env.URI,
           aud: body.get("client_id") as string,
           exp: DateTime.now().plus({ minutes: 5 }).toSeconds(),
           iat: DateTime.now().toSeconds(),
@@ -234,7 +234,7 @@ export async function POST(request: NextRequest) {
             .plus({ minutes: 1 * 60 })
             .toSeconds(),
           sub: session?.userId,
-          iss: process.env.URI + "/auth",
+          iss: process.env.URI,
           ...session.user,
         })
       )
@@ -252,7 +252,7 @@ export async function POST(request: NextRequest) {
       .update(
         JSON.stringify({
           sub: session?.userId,
-          iss: process.env.URI + "/auth",
+          iss: process.env.URI,
           aud: body.get("client_id") as string,
           exp: DateTime.now()
             .plus({ minutes: 1 * 60 })
